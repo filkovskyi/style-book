@@ -1,24 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
+import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 import './App.css';
 
 function App() {
+  const header = '<h1>Header</h1>';
+  const button = '<button>Action</button>';
+  const link = '<a href="#">Link here</a>';
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {header}
+      <br/>
+      <div>{ ReactHtmlParser(header) }</div>
+      <br/>
+      {button}
+      <br/>
+      <br/>
+      <div>{ ReactHtmlParser(button) }</div>
+      <br/>
+      {link}
+      <br/>
+      <div>{ ReactHtmlParser(link) }</div>
     </div>
   );
 }
